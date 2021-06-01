@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+<title>JSF Form Page</title>
+<h:outputStylesheet name="css/style.css" />
+</h:head>
+<h:body>
+    		<ui:insert name = "header" >
+      	     	<ui:include src = "/WEB-INF/Layouts/commonHeader.xhtml" />
+   			</ui:insert>
+				<h:form>
+					<br></br>
+					First Name:<h:inputText value="#{user.firstName}"/>
+					<br></br>
+					<br></br>
+					Last Name:<h:inputText value="#{user.lastName}"/>
+					<br></br>
+					<br></br>
+					<h:commandButton id="submit" value="Submit" action="#{formController.onSubmit(user)}"></h:commandButton>
+					<h:commandButton id="onflash" value="Flash" action="#{formController.onFlash(user)}"></h:commandButton>
+				</h:form>
+				<h:messages /> 
+		    		<ui:insert name = "footer" >
+      	     	<ui:include src = "/WEB-INF/Layouts/commonFooter.xhtml" />
+   			</ui:insert>
+</h:body>
+</html>
