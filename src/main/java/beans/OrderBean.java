@@ -3,7 +3,6 @@ package beans;
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 
 @ManagedBean(name="order")
@@ -32,6 +31,13 @@ public static class Order {
 	private float price;
 	private int quantity;
 	
+	public Order()
+	{
+		this.orderNumber = "";
+		this.productName = "";
+		this.price = 0;
+		this.quantity = 0;
+	}
 	public Order(String orderNumber, String productName, float price, int quantity) {
 		this.orderNumber = orderNumber;
 		this.productName = productName;
