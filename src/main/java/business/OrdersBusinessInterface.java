@@ -4,7 +4,8 @@ package business;
 import java.util.List;
 import javax.ejb.Local;
 
-import beans.OrderBean.Order;
+import beans.Order;
+
 
 @Local 
 public interface OrdersBusinessInterface {
@@ -13,5 +14,6 @@ public interface OrdersBusinessInterface {
 	public void setOrders(List<Order> orders); 
 
 	public void test();
+public void sendOrder(Order order);
 
 }

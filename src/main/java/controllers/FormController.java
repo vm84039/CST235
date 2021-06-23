@@ -11,6 +11,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+
+import beans.Order;
 import beans.User;
 import business.OrdersBusinessInterface;
 
@@ -32,7 +34,7 @@ public class FormController {
 	//	timer.setTimer(10000);
 		FacesContext context = FacesContext.getCurrentInstance();
 		getAllOrders();
-		insertOrder();
+	//	insertOrder();
 		getAllOrders();
 		//put the user object into the POST request
 		user = context.getApplication().evaluateExpressionGet(context, "#{user}", User.class);
@@ -45,6 +47,13 @@ public class FormController {
 		context.getExternalContext().getRequestMap().put("user", user);
 		context.getExternalContext().getFlash().put("user", user);
 		return "TestResponse2.xhtml?faces-redirect=true";
+	}
+	public String onSend() {
+		
+		Order test = new Order("1","Burger", (float) 5.00, 2);
+		test.setID(1);
+		service.sendOrder(test);
+		return "OrderResponse.xhtml";
 	}
 	public OrdersBusinessInterface getService() {
 

@@ -2,7 +2,8 @@ package data;
 
 import java.util.List;
 import javax.ejb.Stateless;
-import beans.OrderBean.Order;
+
+import beans.Order;
 
 
 

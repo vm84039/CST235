@@ -44,6 +44,9 @@
       #{o.quantity}
    </h:column>
 </h:dataTable>
-	<h:button value="Login Again" outcome = "TestForm" /> 
+	<h:form>
+		<h:commandButton id="onSend" value="Send Order" action="#{formController.onSend()}"></h:commandButton> 
+		<h:button value="Login Again" outcome = "TestForm" /> 
+	</h:form>
 </h:body>
 </html> 

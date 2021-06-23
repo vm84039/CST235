@@ -8,7 +8,8 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Alternative;
 
-import beans.OrderBean.Order;
+import beans.Order;
+
 
 /**
  * Session Bean implementation class AnotherOrdersBusinessService
@@ -53,4 +54,11 @@ public class AnotherOrdersBusinessService implements OrdersBusinessInterface {
 	@Override
 	public void setOrders(List<Order> orders) {
 		this.orders = orders;
-}}
+}
+
+
+	@Override
+	public void sendOrder(Order order) {
+		// TODO Auto-generated method stub
+		
+	}}

@@ -1,5 +1,6 @@
 package data;
 
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -8,11 +9,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
-import javax.enterprise.inject.Default;
+import beans.Order;
 
-import beans.OrderBean.Order;
 
 
 
@@ -21,7 +22,9 @@ import beans.OrderBean.Order;
 @LocalBean
 public class OrdersDataService implements DataAccessInterface {
 	
-	@Override
+	
+	
+@Override
 	public List<Order> findAll() {
 		String url = "jdbc:mysql://localhost:3306/testapp";
 		String username = "root";
@@ -59,6 +62,31 @@ public class OrdersDataService implements DataAccessInterface {
 		}
 
 		return orders;
+	}
+	public void send(Order send)
+	{
+		String url = "jdbc:mysql://localhost:3306/testapp";
+		String username = "root";
+		String password = "8160Prest!";
+		Connection conn = null;
+	
+		try
+		{
+			conn = DriverManager.getConnection(url, username, password );
+			if (conn != null) {System.out.println("Connection Success");} else {System.out.println("Connection failure!!");}
+			String sql = String.format("INSERT INTO  testapp.ORDERS(ORDER_NO, PRODUCT_NAME, PRICE, QUANTITY) VALUES"
+					+ "('%s', '%s', %f, %d)", send.getOrderNumber(), send.getProductName(), send.getPrice(), send.getQuantity());
+
+			Statement statement = conn.createStatement();
+			statement.executeUpdate(sql);
+			statement.close();conn.close();
+
+		}
+		catch (SQLException e)
+		{
+			System.out.println("failure!!");
+		}
+		
 	}
 
 }
