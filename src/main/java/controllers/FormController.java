@@ -29,18 +29,14 @@ public class FormController {
 //	@EJB
 //	MyTimerService timer;
 	
-	public String onSubmit(User user) 
+	public String onLogoff() 
 	{
-	//	timer.setTimer(10000);
-		FacesContext context = FacesContext.getCurrentInstance();
-		getAllOrders();
-	//	insertOrder();
-		getAllOrders();
-		//put the user object into the POST request
-		user = context.getApplication().evaluateExpressionGet(context, "#{user}", User.class);
-		FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("user", user);
-	//	Test.test();
-		return "TestResponse.xhtml";
+		// Invalidate the Session to clear the security token
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+			
+		// Redirect to a protected page (so we get a full HTTP Request) to get Login Page
+		return "TestResponse.xhtml?faces-redirect=true";
+
 	}
 	public String onFlash(User user) {
 		FacesContext context = FacesContext.getCurrentInstance();
